@@ -1,0 +1,4 @@
+notebook
+virtualenv
+PyQt5
+PyQtWebEngine

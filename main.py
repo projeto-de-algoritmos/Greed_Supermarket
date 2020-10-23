@@ -422,7 +422,7 @@ class Ui_MainWindow(object):
 
     def set_change(self):
         if self.supermarket.get_total() != 0:
-            change_value = float(self.doubleSpinBox.text()) - self.supermarket.get_total()
+            change_value = float(self.doubleSpinBox.text().replace(',','.')) - self.supermarket.get_total()
             self.change_value.setText('R$ {:.2f}'.format(change_value))
 
             change_count = self.supermarket.calculate_number_of_coins(change_value)

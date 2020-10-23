@@ -59,6 +59,8 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalHeaderItem(1, QtWidgets.QTableWidgetItem('Preço'))
         self.tableWidget.setHorizontalHeaderItem(2, QtWidgets.QTableWidgetItem('Remover produto'))
 
+        self.tableWidget.cellClicked.connect(self.remove_row)
+
         self.ListLayout.addWidget(self.tableWidget)
         self.LeftLayout.addLayout(self.ListLayout)
         self.MoneyNotesLayout = QtWidgets.QHBoxLayout()
@@ -452,7 +454,13 @@ class Ui_MainWindow(object):
                     self.label_005.setText(str(change_count[note]))
                 elif note == 0.01:
                     self.label_001.setText(str(change_count[note]))
-                
+
+    def remove_row(self, row, column):
+        if column == 2:
+            self.supermarket.change_value(float(self.tableWidget.item(row, column - 1).text().split()[1]) * (-1))
+            self.tableWidget.removeRow(row)
+            self.total_products.setText('R$ {:.2f}'.format(self.supermarket.get_total()))
+            self.doubleSpinBox.setMinimum(self.supermarket.get_total())
 
     def add_product(self):
         self.tableWidget.insertRow(self.tableWidget.rowCount())
@@ -465,9 +473,12 @@ class Ui_MainWindow(object):
         price.setTextAlignment(QtCore.Qt.AlignCenter)
         self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 1, price)
         
-        icon = QtWidgets.QTableWidgetItem('R$ {:.2f}'.format(0.00))
-        icon.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 2, icon)
+        remove_icon = QtWidgets.QTableWidgetItem()
+        icon = QtGui.QIcon('..\\Greed_Dupla14/assets/x.png')
+        remove_icon.setIcon(icon)
+        remove_icon.setTextAlignment(QtCore.Qt.AlignHCenter)
+
+        self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 2, remove_icon)
 
         self.supermarket.change_value(float(self.products[self.products_ComboBox.currentText()]))        
         self.total_products.setText('R$ {:.2f}'.format(self.supermarket.get_total()))

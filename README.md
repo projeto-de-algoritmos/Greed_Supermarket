@@ -28,7 +28,7 @@ O projeto tem como objetivo utilizar o conceito de algoritmos gulosos (greedy al
     ``` sudo apt-get install python3-pip ```
     
 - Clone o repositório:<br>
-    ``` git clone https://github.com/projeto-de-algoritmos/Grafos2_DF-Bus ```
+    ``` git clone https://github.com/projeto-de-algoritmos/Greed_Supermarket ```
 
 - Instale as bibliotecas necessárias:<br>
     ``` pip install -r requirements.txt ```
@@ -46,10 +46,5 @@ Após estar dentro da pasta do projeto e com todas as bibliotecas instaladas, ex
 4. Digite o valor pago no campo "Valor Pago:" separando os centavos com uma vírgula.
 5. Será então apresentado o troco.
 6. Na parte inferior da tela será mostrado a quantidade de cada cédula e/ou moeda que deverá ser utilizada no troco de forma que se utilize a menor quantidade unitária no mesmo.
-
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
 
 

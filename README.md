@@ -21,9 +21,17 @@ O projeto tem como objetivo utilizar o conceito de algoritmos gulosos (greedy al
 ![total](images/total.png)
 
 ## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Linguagem**: Python<br>
+É necessário ter instalado o **Python** e o **pip** para executar o projeto (é recomendado utilizar um ambiente virtual para instalar e executar o projeto).
+
+- Para instalar o gerenciador de pacotes pip:<br>
+    ``` sudo apt-get install python3-pip ```
+    
+- Clone o repositório:<br>
+    ``` git clone https://github.com/projeto-de-algoritmos/Grafos2_DF-Bus ```
+
+- Instale as bibliotecas necessárias:<br>
+    ``` pip install -r requirements.txt ```
 
 ## Uso 
 ### Para executar o projeto

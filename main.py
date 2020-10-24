@@ -463,26 +463,27 @@ class Ui_MainWindow(object):
             self.doubleSpinBox.setMinimum(self.supermarket.get_total())
 
     def add_product(self):
-        self.tableWidget.insertRow(self.tableWidget.rowCount())
-        
-        product = QtWidgets.QTableWidgetItem(self.products_ComboBox.currentText())
-        product.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 0, product)
-        
-        price = QtWidgets.QTableWidgetItem('R$ {:.2f}'.format(self.products[self.products_ComboBox.currentText()]))
-        price.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 1, price)
-        
-        remove_icon = QtWidgets.QTableWidgetItem()
-        icon = QtGui.QIcon('./assets/x.png')
-        remove_icon.setIcon(icon)
-        remove_icon.setTextAlignment(QtCore.Qt.AlignHCenter)
+        if self.products_ComboBox.currentText() != "":
+            self.tableWidget.insertRow(self.tableWidget.rowCount())
+            
+            product = QtWidgets.QTableWidgetItem(self.products_ComboBox.currentText())
+            product.setTextAlignment(QtCore.Qt.AlignCenter)
+            self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 0, product)
+            
+            price = QtWidgets.QTableWidgetItem('R$ {:.2f}'.format(self.products[self.products_ComboBox.currentText()]))
+            price.setTextAlignment(QtCore.Qt.AlignCenter)
+            self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 1, price)
+            
+            remove_icon = QtWidgets.QTableWidgetItem()
+            icon = QtGui.QIcon('./assets/x.png')
+            remove_icon.setIcon(icon)
+            remove_icon.setTextAlignment(QtCore.Qt.AlignHCenter)
 
-        self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 2, remove_icon)
+            self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 2, remove_icon)
 
-        self.supermarket.change_value(float(self.products[self.products_ComboBox.currentText()]))        
-        self.total_products.setText('R$ {:.2f}'.format(self.supermarket.get_total()))
-        self.doubleSpinBox.setMinimum(self.supermarket.get_total())
+            self.supermarket.change_value(float(self.products[self.products_ComboBox.currentText()]))        
+            self.total_products.setText('R$ {:.2f}'.format(self.supermarket.get_total()))
+            self.doubleSpinBox.setMinimum(self.supermarket.get_total())
 
     def load_ComboBox(self):
         self.products_ComboBox.addItem(None)
